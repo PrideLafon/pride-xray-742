@@ -1,15 +1,14 @@
-FROM alpine:3.19 AS builder
+FROM alpine:3.20 AS builder
 
-ARG XRAY_VERSION=25.1.1
 WORKDIR /tmp
 
-RUN apk add --no-cache curl tar && \
-    curl -fsSL -o xray.tar.gz \
-    "https://github.com/XTLS/Xray-core/releases/download/vv25.1.1/Xray-linux-64.tar.gz" && \
-    tar -xzf xray.tar.gz && \
+RUN apk add --no-cache curl unzip && \
+    curl -fsSL -o xray.zip \
+    "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip" && \
+    unzip xray.zip xray && \
     chmod +x xray
 
-FROM alpine:3.19
+FROM alpine:3.20
 
 RUN apk add --no-cache ca-certificates
 
@@ -19,4 +18,4 @@ COPY server.json /etc/xray/config.json
 EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/xray"]
-CMD ["-config", "/etc/xray/config.json"]
+CMD ["run", "-config", "/etc/xray/config.json"]
