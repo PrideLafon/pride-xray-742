@@ -1,4 +1,4 @@
-# SpectreTech Proxy — Fly.io Deployment
+# LafonTech Proxy — Fly.io Deployment
 
 Server-side configuration to mirror your existing VLESS+WS+TLS client logic on Fly.io's free tier (always-on, never sleeps).
 
