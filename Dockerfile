@@ -5,7 +5,7 @@ WORKDIR /tmp
 
 RUN apk add --no-cache curl tar && \
     curl -fsSL -o xray.tar.gz \
-    "https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.tar.gz" && \
+    "https://github.com/XTLS/Xray-core/releases/download/vv25.1.1/Xray-linux-64.tar.gz" && \
     tar -xzf xray.tar.gz && \
     chmod +x xray
 
